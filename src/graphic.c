@@ -9,6 +9,7 @@ void print_field(int x_racket_left, int y_racket_left,
               int x_ball, int y_ball,
               int score_left,
               int score_right) {
+    int step_out = 3;
     for (int i = 0; i < height; i++) {
         for (int j = 0;  j < wight; j++) {
             if (i == 0 || i == height - 1)
@@ -19,15 +20,15 @@ void print_field(int x_racket_left, int y_racket_left,
                 printf("[");
             else if (j == x_ball && i == y_ball)
                 printf("o");
-            else if (score_left / 10 > 0 && j == wight / 2 - 3 && i == height / 2)
+            else if (score_left / 10 > 0 && j == wight / 2 - step_out - 2 && i == height / 2)
                 printf("%d", score_left / 10);
-            else if (j == wight / 2 - 2 && i == height / 2)
+            else if (j == wight / 2 - step_out - 1 && i == height / 2)
                 printf("%d", score_left % 10);
-            else if (score_right/ 10 > 0 && j == wight / 2 + 1 && i == height / 2)
+            else if (score_right/ 10 > 0 && j == wight / 2 + step_out && i == height / 2)
                 printf("%d", score_right / 10);
-            else if (score_right/ 10 > 0 && j == wight / 2 + 2 && i == height / 2)
+            else if (score_right/ 10 > 0 && j == wight / 2 + step_out + 1 && i == height / 2)
                 printf("%d", score_right % 10);
-            else if (j == wight / 2 + 1 && i == height / 2)
+            else if (j == wight / 2 + step_out && i == height / 2)
                 printf("%d", score_right % 10);
             else if (j == wight / 2 - 1 || j == wight / 2)
                 printf("|");
@@ -39,6 +40,7 @@ void print_field(int x_racket_left, int y_racket_left,
 }
 
 void ending_field(int score_left, int score_right) {
+    int step_out = 3;
     for (int i = 0; i < height; i++) {
         for (int j = 0;  j < wight; j++) {
             if (i == 0 || i == height - 1)
@@ -47,19 +49,19 @@ void ending_field(int score_left, int score_right) {
                 printf("]");
             else if (i >= height / 2 - 1 && i <= height / 2 + 1 && j == wight - 1)
                 printf("[");
-            else if (score_left / 10 > 0 && j == wight / 2 - 3 && i == height / 2)
+            else if (score_left / 10 > 0 && j == wight / 2 - step_out - 2 && i == height / 2)
                 printf("%d", score_left / 10);
-            else if (j == wight / 2 - 2 && i == height / 2)
+            else if (j == wight / 2 - step_out - 1 && i == height / 2)
                 printf("%d", score_left % 10);
-            else if (score_right/ 10 > 0 && j == wight / 2 + 1 && i == height / 2)
+            else if (score_right/ 10 > 0 && j == wight / 2 + step_out && i == height / 2)
                 printf("%d", score_right / 10);
-            else if (score_right/ 10 > 0 && j == wight / 2 + 2 && i == height / 2)
+            else if (score_right/ 10 > 0 && j == wight / 2 + step_out + 1 && i == height / 2)
                 printf("%d", score_right % 10);
-            else if (j == wight / 2 + 1 && i == height / 2)
+            else if (j == wight / 2 + step_out && i == height / 2)
                 printf("%d", score_right % 10);
             else if (j == wight / 2 - 1 || j == wight / 2)
                 printf("|");
-            else if (score_left == 21) {
+            if (score_left == 21) {
                 if (i == height / 2 && j == 17)
                     printf("winner");
                 else if (i != height / 2 || j < 17 || j > 22)
@@ -73,5 +75,4 @@ void ending_field(int score_left, int score_right) {
         }
         printf("\n");
     }
-
 }
