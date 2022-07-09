@@ -4,19 +4,19 @@
 #define wight 80
 
 
-void print_field(int x_racket_left, int y_racket_left,
-              int x_racket_right, int y_racket_right,
-              int x_ball, int y_ball,
-              int score_left,
-              int score_right) {
+void print_field(int y_racket_left,
+                 int y_racket_right,
+                 int x_ball, int y_ball,
+                 int score_left,
+                 int score_right) {
     int step_out = 3;
     for (int i = 0; i < height; i++) {
         for (int j = 0;  j < wight; j++) {
             if (i == 0 || i == height - 1)
                 printf("-");
-            else if (i >= y_racket_left - 1 && i <= y_racket_left + 1 && j == x_racket_left)
+            else if (i >= y_racket_left - 1 && i <= y_racket_left + 1 && j == 0)
                 printf("]");
-            else if (i >= y_racket_right - 1 && i <= y_racket_right + 1 && j == x_racket_right)
+            else if (i >= y_racket_right - 1 && i <= y_racket_right + 1 && j == wight - 1)
                 printf("[");
             else if (j == x_ball && i == y_ball)
                 printf("o");
