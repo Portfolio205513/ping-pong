@@ -3,7 +3,7 @@
 void game(const int width, const int height);
 void ballMove(const int width, const int height,
                 int* ballY, int* ballX,
-                int* ballSpeedYProjection, int* ballSpeedXProjection, 
+                int* ballSpeedYProjection, int* ballSpeedXProjection,
                 int leftRocketY, int rightRocketY);
 int racket1(const int height, char com, int y);
 int racket2(const int height, char com, int y);
@@ -32,7 +32,6 @@ void game(const int width, const int height) {
         int xball = width / 2, yball = (height / 2) + 1;
         int racket1_y = (height / 2) + 1;
         int racket2_y = (height / 2) + 1;
-        char move, trash;
 
         last_start *= -1;
         direction_ball_x *= last_start;
@@ -44,13 +43,13 @@ void game(const int width, const int height) {
 
         while (1) {
             print_field(width, height, racket1_y, racket2_y, xball, yball, score1, score2);
-            
+
             int isIncorrectInput = 0;
-            move = getchar();
-            trash = getchar();
+            char move = getchar();
+            char trash = getchar();
             while (trash != '\n') {
                 isIncorrectInput = 1;
-                trash = getchar();   
+                trash = getchar();
             }
 
             if (isIncorrectInput) {
@@ -61,10 +60,8 @@ void game(const int width, const int height) {
             racket2_y = racket2(height, move, racket2_y);
 
             ballMove(width, height, &yball, &xball,
-                &direction_ball_y, &direction_ball_x, 
+                &direction_ball_y, &direction_ball_x,
                 racket1_y, racket2_y);
-
-            //check direction_ball_y [0, height]
 
             if (xball == 0) {
                 score2++;
@@ -81,7 +78,7 @@ void game(const int width, const int height) {
 
 void ballMove(const int width, const int height,
                 int* ballY, int* ballX,
-                int* ballSpeedYProjection, int* ballSpeedXProjection, 
+                int* ballSpeedYProjection, int* ballSpeedXProjection,
                 int leftRocketY, int rightRocketY) {
     *ballX += *ballSpeedXProjection;
     *ballY += *ballSpeedYProjection;
@@ -143,7 +140,7 @@ void ballMove(const int width, const int height,
                 *ballSpeedYProjection -= 1;
             } else if (*ballSpeedYProjection < 0) {
                 *ballSpeedYProjection -= 1;
-            } else if (*ballSpeedYProjection == 0) {
+            } else {
                 *ballSpeedYProjection -= 1;
             }
 
@@ -153,7 +150,7 @@ void ballMove(const int width, const int height,
                 *ballSpeedYProjection += 1;
             } else if (*ballSpeedYProjection < 0) {
                 *ballSpeedYProjection += 1;
-            } else if (*ballSpeedYProjection == 0) {
+            } else {
                 *ballSpeedYProjection += 1;
             }
 
@@ -175,11 +172,11 @@ int racket1(const int height, char com, int y) {
     if ((com == 'a' || com == 'A') &&  y > 2) {
         return y - 1;
     }
-    
+
     if ((com == 'z' || com == 'Z') && y + 3 < height) {
         return y + 1;
     }
-    
+
     return y;
 }
 
@@ -187,7 +184,7 @@ int racket2(const int height, char change, int y) {
     if ((change == 'k' || change == 'K') && y > 2) {
         return y - 1;
     }
-    
+
     if ((change == 'm' || change == 'M') && y + 3 < height) {
         return y + 1;
     }
@@ -231,7 +228,7 @@ void print_field(const int width, const int height,
     }
 }
 
-void ending_field(const int width, const int height, 
+void ending_field(const int width, const int height,
                     int score_left, int score_right) {
     int step_out = 3;
 
