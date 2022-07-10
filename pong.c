@@ -2,6 +2,32 @@
 #define width = 80
 #define height = 25
 
+// int collision() {
+// }
+
+// int ball() {
+// }
+
+int racket1(char com, int y) {
+    if ((com == 'a' || com == 'A') &&  y - 1 != 1) {
+        return y - 1;
+    } else if ((com == 'z' || com == 'Z') && y + 1 != height) {
+        return y + 1;
+    } else {
+        return y;
+    }
+}
+
+int racket2(char change, int y) {
+    if ((change == 'k' || change == 'K') && y-1 != 1) {
+        return y - 1;
+    } else if ((change == 'm' || change == 'M') && y + 1 != height) {
+        return y + 1;
+    } else {
+        return y;
+    }
+}
+
 void game() {
     int score1 = 0, score2 = 0;
     int direction_ball_y = 1, direction_ball_x = 1;
@@ -27,8 +53,8 @@ void game() {
             //
 
             // i thing so
-            direction_ball_y = BallMoveY(yball, direction_ball_y);
-            direction_ball_x = BallMoveY(yball, direction_ball_x);
+            // direction_ball_y = ballmoveY(yball, direction_ball_y);
+            // direction_ball_x = ballmoveY(yball, direction_ball_x);
             //
 
             xball += direction_ball_x;
@@ -44,33 +70,6 @@ void game() {
                 break;
             }
        }
-    }
-}
-
-// int collision() {
-// }
-
-// int ball() {
-// }
-
-
-int racket1(char com, int y) {
-    if ((com == 'a' || com == 'A') &&  y - 1 != 1) {
-        return y - 1;
-    } else if ((com == 'z' || com == 'Z') && y + 1 != height) {
-        return y + 1;
-    } else {
-        return y;
-    }
-}
-
-int racket2(char change, int y) {
-    if ((change == 'k' || change == 'K') && y-1 != 1) {
-        return y - 1;
-    } else if ((change == 'm' || change == 'M') && y + 1 != height) {
-        return y + 1;
-    } else {
-        return y;
     }
 }
 
