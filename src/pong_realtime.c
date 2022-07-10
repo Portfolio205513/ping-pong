@@ -74,9 +74,12 @@ void game(const int width, const int height) {
 
             char move = getchar();
 
+            // if (direction_ball_x < 0) {
+            // racket1_y = racket1(height, move, racket1_y);
+            // } else racket2_y = racket2(height, move, racket2_y);
+
             racket1_y = racket1(height, move, racket1_y);
             racket2_y = racket2(height, move, racket2_y);
-
             ballMove(width, height, &yball, &xball,
                 &direction_ball_y, &direction_ball_x,
                 racket1_y, racket2_y);
