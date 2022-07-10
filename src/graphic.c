@@ -79,8 +79,3 @@ void ending_field(int score_left, int score_right) {
         printf("\n");
     }
 }
-
-int main(){
-    print_field(15, 3, 60, 12, 21, 13);
-    ending_field(21, 13);
-}
